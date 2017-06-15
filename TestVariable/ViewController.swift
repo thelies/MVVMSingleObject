@@ -16,14 +16,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var checkButton: UIButton!
     
-    var viewModel = TaskItemViewModel()
+    var viewModel: TaskItemViewModel!
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.createItem()
+//        viewModel.createItem()
+        let item = TaskItemViewModel.fetchItemById(id: 1)
+        viewModel = TaskItemViewModel(item: item!)
         bind()
-        viewModel.fetchItemById(id: 1)
         
         // Do any additional setup after loading the view, typically from a nib.
         descLabel.rx.observe(String.self, "text").subscribe(onNext: { _ in

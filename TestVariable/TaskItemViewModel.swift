@@ -18,23 +18,22 @@ class TaskItemViewModel {
     let isChecked = Variable<Bool>(false)
     
     private let disposeBag = DisposeBag()
-    var taskItem: TaskItem? = nil {
-        didSet {
-            if let item = taskItem {
-                item.rx.observe(Int.self, "id")
-                    .map { _ in item.id }.bind(to: self.id)
-                    .addDisposableTo(disposeBag)
-                item.rx.observe(String.self, "title")
-                    .map { _ in item.title }.bind(to: self.title)
-                    .addDisposableTo(disposeBag)
-                item.rx.observe(String.self, "desc")
-                    .map { _ in item.desc}.bind(to: self.desc)
-                    .addDisposableTo(disposeBag)
-                item.rx.observe(Bool.self, "isChecked")
-                    .map { _ in item.isChecked }.bind(to: self.isChecked)
-                    .addDisposableTo(disposeBag)
-            }
-        }
+    let taskItem: TaskItem
+
+    init(item: TaskItem) {
+        taskItem = item
+        taskItem.rx.observe(Int.self, "id")
+            .map { _ in self.taskItem.id }.bind(to: self.id)
+            .addDisposableTo(disposeBag)
+        taskItem.rx.observe(String.self, "title")
+            .map { _ in self.taskItem.title }.bind(to: self.title)
+            .addDisposableTo(disposeBag)
+        taskItem.rx.observe(String.self, "desc")
+            .map { _ in self.taskItem.desc }.bind(to: self.desc)
+            .addDisposableTo(disposeBag)
+        taskItem.rx.observe(Bool.self, "isChecked")
+            .map { _ in self.taskItem.isChecked }.bind(to: self.isChecked)
+            .addDisposableTo(disposeBag)
     }
     
     func check() {
@@ -52,10 +51,10 @@ class TaskItemViewModel {
         }
     }
     
-    func fetchItemById(id: Int) {
+    static func fetchItemById(id: Int) -> TaskItem? {
         let realm = try! Realm()
         let item = realm.object(ofType: TaskItem.self, forPrimaryKey: id)
-        self.taskItem = item
+        return item
     }
     
     func createItem() {
