@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import RxDataSources
 
 class TaskItem: Object {
     dynamic var id: Int = 0
@@ -18,5 +19,11 @@ class TaskItem: Object {
     
     override static func primaryKey() -> String? {
         return "id"
+    }
+}
+
+extension TaskItem: IdentifiableType {
+    var identity: Int {
+        return self.isInvalidated ? 0 : id
     }
 }

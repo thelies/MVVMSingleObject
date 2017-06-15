@@ -11,6 +11,9 @@
 		C92EE5314A382FB0389E0A2D /* Pods_TestVariableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DE6C94045A2ABC4570902C /* Pods_TestVariableTests.framework */; };
 		E410C7C81EF2406F0075F3FB /* InnerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E410C7C71EF2406F0075F3FB /* InnerItem.swift */; };
 		E410C7CA1EF2418F0075F3FB /* InnerItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E410C7C91EF2418F0075F3FB /* InnerItemViewModel.swift */; };
+		E410C7CC1EF276C70075F3FB /* TaskItemListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E410C7CB1EF276C70075F3FB /* TaskItemListViewModel.swift */; };
+		E410C7CE1EF27D780075F3FB /* TaskItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E410C7CD1EF27D780075F3FB /* TaskItemListViewController.swift */; };
+		E4702D7D1EF27FDF00309A28 /* TaskItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4702D7C1EF27FDF00309A28 /* TaskItemCell.swift */; };
 		E47C1A491EF1313100CADF3B /* TaskItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47C1A481EF1313100CADF3B /* TaskItemViewModel.swift */; };
 		E49559231EF12D3900B63CCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49559221EF12D3900B63CCB /* AppDelegate.swift */; };
 		E49559251EF12D3900B63CCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49559241EF12D3900B63CCB /* ViewController.swift */; };
@@ -53,6 +56,9 @@
 		C5DE6C94045A2ABC4570902C /* Pods_TestVariableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestVariableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E410C7C71EF2406F0075F3FB /* InnerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InnerItem.swift; sourceTree = "<group>"; };
 		E410C7C91EF2418F0075F3FB /* InnerItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InnerItemViewModel.swift; sourceTree = "<group>"; };
+		E410C7CB1EF276C70075F3FB /* TaskItemListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskItemListViewModel.swift; sourceTree = "<group>"; };
+		E410C7CD1EF27D780075F3FB /* TaskItemListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskItemListViewController.swift; sourceTree = "<group>"; };
+		E4702D7C1EF27FDF00309A28 /* TaskItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskItemCell.swift; sourceTree = "<group>"; };
 		E47C1A481EF1313100CADF3B /* TaskItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskItemViewModel.swift; sourceTree = "<group>"; };
 		E495591F1EF12D3900B63CCB /* TestVariable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestVariable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E49559221EF12D3900B63CCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +128,35 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E4702D7E1EF29AC400309A28 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E47C1A481EF1313100CADF3B /* TaskItemViewModel.swift */,
+				E410C7C91EF2418F0075F3FB /* InnerItemViewModel.swift */,
+				E410C7CB1EF276C70075F3FB /* TaskItemListViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		E4702D7F1EF29AD700309A28 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E49559531EF12EBF00B63CCB /* TaskItem.swift */,
+				E410C7C71EF2406F0075F3FB /* InnerItem.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E4702D801EF29AE300309A28 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E49559241EF12D3900B63CCB /* ViewController.swift */,
+				E410C7CD1EF27D780075F3FB /* TaskItemListViewController.swift */,
+				E4702D7C1EF27FDF00309A28 /* TaskItemCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		E49559161EF12D3900B63CCB = {
 			isa = PBXGroup;
 			children = (
@@ -147,17 +182,15 @@
 		E49559211EF12D3900B63CCB /* TestVariable */ = {
 			isa = PBXGroup;
 			children = (
+				E4702D801EF29AE300309A28 /* View */,
+				E4702D7F1EF29AD700309A28 /* Model */,
+				E4702D7E1EF29AC400309A28 /* ViewModel */,
 				E49559221EF12D3900B63CCB /* AppDelegate.swift */,
-				E49559241EF12D3900B63CCB /* ViewController.swift */,
 				E49559261EF12D3900B63CCB /* Main.storyboard */,
 				E495592C1EF12D3900B63CCB /* Assets.xcassets */,
 				E495592E1EF12D3900B63CCB /* LaunchScreen.storyboard */,
 				E49559311EF12D3900B63CCB /* Info.plist */,
 				E49559291EF12D3900B63CCB /* TestVariable.xcdatamodeld */,
-				E49559531EF12EBF00B63CCB /* TaskItem.swift */,
-				E47C1A481EF1313100CADF3B /* TaskItemViewModel.swift */,
-				E410C7C71EF2406F0075F3FB /* InnerItem.swift */,
-				E410C7C91EF2418F0075F3FB /* InnerItemViewModel.swift */,
 			);
 			path = TestVariable;
 			sourceTree = "<group>";
@@ -461,13 +494,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E410C7CC1EF276C70075F3FB /* TaskItemListViewModel.swift in Sources */,
 				E410C7CA1EF2418F0075F3FB /* InnerItemViewModel.swift in Sources */,
 				E495592B1EF12D3900B63CCB /* TestVariable.xcdatamodeld in Sources */,
 				E47C1A491EF1313100CADF3B /* TaskItemViewModel.swift in Sources */,
 				E49559251EF12D3900B63CCB /* ViewController.swift in Sources */,
+				E410C7CE1EF27D780075F3FB /* TaskItemListViewController.swift in Sources */,
 				E49559231EF12D3900B63CCB /* AppDelegate.swift in Sources */,
 				E49559541EF12EBF00B63CCB /* TaskItem.swift in Sources */,
 				E410C7C81EF2406F0075F3FB /* InnerItem.swift in Sources */,
+				E4702D7D1EF27FDF00309A28 /* TaskItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

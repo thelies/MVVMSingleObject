@@ -22,11 +22,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.delegate = self
         tableView.dataSource = self
-        TaskItemViewModel.createItem()
-        let item = TaskItemViewModel.fetchItemById(id: 1)
-        viewModel = TaskItemViewModel(item: item!)
         bind()
         
         // Do any additional setup after loading the view, typically from a nib.

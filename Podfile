@@ -9,6 +9,8 @@ target 'TestVariable' do
   pod 'RealmSwift'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxRealm'
+  pod 'RxDataSources'
 
   target 'TestVariableTests' do
     inherit! :search_paths
