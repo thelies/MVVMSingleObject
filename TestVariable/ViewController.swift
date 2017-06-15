@@ -15,13 +15,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
     var viewModel: TaskItemViewModel!
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        viewModel.createItem()
+//        tableView.delegate = self
+        tableView.dataSource = self
+        TaskItemViewModel.createItem()
         let item = TaskItemViewModel.fetchItemById(id: 1)
         viewModel = TaskItemViewModel(item: item!)
         bind()
@@ -63,6 +66,25 @@ class ViewController: UIViewController {
             self.viewModel.check()
         })
         .addDisposableTo(disposeBag)
+    }
+}
+
+extension ViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.taskItem.innerItems.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: InnerItemCell.identifier) as! InnerItemCell
+        cell.viewModel = InnerItemViewModel(item: viewModel.taskItem.innerItems[indexPath.row])
+        cell.bind()
+        
+        return cell
     }
 }
 

@@ -36,6 +36,22 @@ class TaskItemViewModel {
             .addDisposableTo(disposeBag)
     }
     
+    static func createItem() {
+        let realm = try! Realm()
+        let item = TaskItem()
+        item.id = (realm.objects(TaskItem.self).max(ofProperty: "id") ?? 0) + 1
+        item.title = "This is title"
+        item.desc = "Tap check button to change desc"
+        item.isChecked = false
+        for _ in 1 ... 10 {
+            let innerItem = InnerItemViewModel.createItem()
+            item.innerItems.append(innerItem)
+        }
+        try! realm.write {
+            realm.add(item)
+        }
+    }
+    
     func check() {
         let realm = try! Realm()
         let item = realm.object(ofType: TaskItem.self, forPrimaryKey: self.id.value)
@@ -55,17 +71,5 @@ class TaskItemViewModel {
         let realm = try! Realm()
         let item = realm.object(ofType: TaskItem.self, forPrimaryKey: id)
         return item
-    }
-    
-    func createItem() {
-        let realm = try! Realm()
-        let item = TaskItem()
-        item.id = (realm.objects(TaskItem.self).max(ofProperty: "id") ?? 0) + 1
-        item.title = "This is title"
-        item.desc = "Tap check button to change desc"
-        item.isChecked = false
-        try! realm.write {
-            realm.add(item)
-        }
     }
 }
